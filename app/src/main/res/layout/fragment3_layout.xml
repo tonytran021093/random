@@ -6,77 +6,70 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-<<<<<<< Updated upstream
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/hinh3" />
+
     <EditText
         android:id="@+id/edtNhapGiaTri"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginStart="10dp"
+        android:background="#4DFFFFFF"
         android:ems="10"
-        android:hint="Nhập giá trị cần random"
+        android:hint="Nhập giá trị random"
         android:inputType="textPersonName"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
-    <Button
+    <ImageButton
         android:id="@+id/btnAdd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ADD"
-        android:textColor="#000000"
-        android:textStyle="bold"
+        android:layout_width="70dp"
+        android:layout_height="50dp"
+        android:background="#00FFFFFF"
+        android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="@+id/edtNhapGiaTri"
         app:layout_constraintStart_toEndOf="@+id/edtNhapGiaTri"
-        app:layout_constraintTop_toTopOf="@+id/edtNhapGiaTri" />
+        app:layout_constraintTop_toTopOf="@+id/edtNhapGiaTri"
+        app:srcCompat="@drawable/add" />
 
     <ListView
         android:id="@+id/lvDanhSach"
         android:layout_width="300dp"
-        android:layout_height="200dp"
+        android:layout_height="250dp"
+        android:background="#1AFFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnAdd" />
-
-    <Button
-        android:id="@+id/btnRanDom3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="RANDOM"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtKQLV" />
 
     <TextView
         android:id="@+id/txtKQLV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:text="Random Value"
+        android:textColor="#000000"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lvDanhSach" />
 
-    <Button
-        android:id="@+id/btnXoa"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:text="Xóa"
-        app:layout_constraintBottom_toBottomOf="@+id/btnRanDom3"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/btnRanDom3" />
-=======
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="200dp"
-        android:layout_height="150dp"
+    <ImageButton
+        android:id="@+id/btnRanDom3"
+        android:layout_width="100dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="30dp"
+        android:background="#00FFFFFF"
+        android:scaleType="fitCenter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/hinh3" />
->>>>>>> Stashed changes
+        app:layout_constraintTop_toBottomOf="@+id/txtKQLV"
+        app:srcCompat="@drawable/btnrandom" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

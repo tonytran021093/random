@@ -7,16 +7,26 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import java.util.Objects;
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class Fragment2 extends Fragment {
 
+    Timer timer;
+    int stop;
     TextView txtKQ2;
-    EditText edtMin,edtMax;
+    EditText edtMin, edtMax;
     ImageButton imbRanDom2;
+    int so1;
+    int so2;
+    int soRanDom;
 
     @Nullable
     @Override
@@ -24,6 +34,7 @@ public class Fragment2 extends Fragment {
         super.onCreateView(inflater, container, savedInstanceState);
         return inflater.inflate(R.layout.fragment2_layout, container, false);
     }
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -36,18 +47,53 @@ public class Fragment2 extends Fragment {
         imbRanDom2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                xulyRandom();
+
+                if (edtMin.getText().toString().trim().length() == 0 || edtMax.getText().toString().trim().length() == 0) {
+                    Toast.makeText(getContext(), "Vui lòng nhập đầy đủ giá trị", Toast.LENGTH_LONG).show();
+                } else {
+                    so1 = Integer.parseInt(edtMin.getText().toString());
+                    so2 = Integer.parseInt(edtMax.getText().toString());
+
+                    if (so1 >= so2) {
+                        Toast.makeText(getContext(), "Vui lòng nhập số Min nhỏ hơn số Max", Toast.LENGTH_LONG).show();
+                    } else {
+                        xulyRanDom();
+                    }
+                }
             }
         });
     }
 
-    private void xulyRandom() {
-        int so1 = Integer.parseInt(edtMin.getText().toString());
-        int so2 = Integer.parseInt(edtMax.getText().toString());
-        
+    private void xulyRanDom() {
+        timer = new Timer();
+        RunRanDomPhepToan runRanDomPhepToan = new RunRanDomPhepToan();
+        timer.scheduleAtFixedRate(runRanDomPhepToan, 70, 70);
+        imbRanDom2.setEnabled(false);
+
     }
 
-    public int getRandomMinMax(int min,int max) {
+    class RunRanDomPhepToan extends TimerTask {
+
+        @Override
+        public void run() {
+            Objects.requireNonNull(getActivity()).runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    stop = stop + 1;
+                    if (stop == 20) {
+                        timer.cancel();
+                        stop = 0;
+                        imbRanDom2.setEnabled(true);
+                    } else {
+                        soRanDom = getRandomMinMax(so1, so2 + 1);
+                        txtKQ2.setText(String.valueOf(soRanDom));
+                    }
+                }
+            });
+        }
+    }
+
+    public int getRandomMinMax(int min, int max) {
         return (int) Math.floor(Math.random() * (max - min)) + min;
     }
 }

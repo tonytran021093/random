@@ -5,8 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,8 +23,8 @@ import java.util.TimerTask;
 public class Fragment3 extends Fragment {
 
     EditText edtNhapGiaTri;
-    Button btnAdd, btnRanDom3,btnXoa;
     TextView txtKQLV;
+    ImageButton btnRanDom3,btnAdd;
 
     ListView lvDanhSach;
     ArrayList<String> arrayList;
@@ -49,7 +49,6 @@ public class Fragment3 extends Fragment {
         edtNhapGiaTri = view.findViewById(R.id.edtNhapGiaTri);
         btnAdd = view.findViewById(R.id.btnAdd);
         btnRanDom3 = view.findViewById(R.id.btnRanDom3);
-        btnXoa = view.findViewById(R.id.btnXoa);
         txtKQLV = view.findViewById(R.id.txtKQLV);
 
         lvDanhSach = view.findViewById(R.id.lvDanhSach);
@@ -83,13 +82,6 @@ public class Fragment3 extends Fragment {
                 }else {
                     xulyRanDom();
                 }
-            }
-        });
-
-        btnXoa.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
             }
         });
     }
