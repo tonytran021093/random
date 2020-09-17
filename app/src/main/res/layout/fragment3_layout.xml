@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+<<<<<<< Updated upstream
     <EditText
         android:id="@+id/edtNhapGiaTri"
         android:layout_width="wrap_content"
@@ -68,4 +69,14 @@
         app:layout_constraintBottom_toBottomOf="@+id/btnRanDom3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/btnRanDom3" />
+=======
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="200dp"
+        android:layout_height="150dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/hinh3" />
+>>>>>>> Stashed changes
 </androidx.constraintlayout.widget.ConstraintLayout>

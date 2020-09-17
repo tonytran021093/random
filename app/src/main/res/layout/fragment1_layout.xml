@@ -7,14 +7,45 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/imgHinhQuay"
-        android:layout_width="350dp"
-        android:layout_height="350dp"
-        android:layout_marginTop="150dp"
+        android:id="@+id/imageView"
+        android:layout_width="200dp"
+        android:layout_height="150dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/hinh1" />
+
+    <TextView
+        android:id="@+id/txtQuay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:text="1"
+        android:textColor="#000000"
+        android:textSize="100sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <ImageView
+        android:id="@+id/imgHinhQuay"
+        android:layout_width="350dp"
+        android:layout_height="350dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtQuay"
         app:srcCompat="@drawable/hinhtronso" />
+
+    <ImageView
+        android:id="@+id/imgTamGiac"
+        android:layout_width="50dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toEndOf="@+id/imbQuay"
+        app:layout_constraintStart_toStartOf="@+id/imbQuay"
+        app:layout_constraintTop_toTopOf="@+id/imbQuay"
+        app:srcCompat="@drawable/tamgiac" />
 
     <ImageButton
         android:id="@+id/imbQuay"
@@ -27,4 +58,5 @@
         app:layout_constraintStart_toStartOf="@+id/imgHinhQuay"
         app:layout_constraintTop_toTopOf="@+id/imgHinhQuay"
         app:srcCompat="@drawable/btn" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
