@@ -20,11 +20,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:background="#4DFFFFFF"
+        android:background="#80FFFFFF"
         android:ems="10"
         android:hint="Nhập giá trị random"
         android:inputType="textPersonName"
-        android:textSize="20sp"
+        android:textSize="22sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
@@ -43,7 +43,7 @@
         android:id="@+id/lvDanhSach"
         android:layout_width="300dp"
         android:layout_height="250dp"
-        android:background="#1AFFFFFF"
+        android:background="#4DFFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnAdd" />
