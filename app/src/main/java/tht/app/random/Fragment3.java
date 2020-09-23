@@ -1,13 +1,17 @@
 package tht.app.random;
 
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,6 +38,8 @@ public class Fragment3 extends Fragment {
     int stop = 0;
     int totalItem;
 
+    Database database;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -45,6 +51,9 @@ public class Fragment3 extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        database = new Database(getContext(),"danhsach.sqlite",null,1);
+        database.QueryData("CREATE TABLE IF NOT EXISTS DanhSach(Id INTEGER PRIMARY KEY AUTOINCREMENT,TenRanDom VARCHAR(200))");
 
         edtNhapGiaTri = view.findViewById(R.id.edtNhapGiaTri);
         btnAdd = view.findViewById(R.id.btnAdd);
@@ -66,6 +75,9 @@ public class Fragment3 extends Fragment {
                     adapter.notifyDataSetChanged();
                     edtNhapGiaTri.setText("");
                     edtNhapGiaTri.requestFocus();
+
+                    database.QueryData("INSERT INTO DanhSach VALUES(null,'" + ten + "')");
+                    GetDataDanhSach();
                 }else {
                     Toast.makeText(getContext(),"Vui lòng nhập giá trị",Toast.LENGTH_LONG).show();
                 }
@@ -84,6 +96,61 @@ public class Fragment3 extends Fragment {
                 }
             }
         });
+
+        lvDanhSach.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
+                PopupMenu popupMenu = new PopupMenu(getActivity(), view);
+                popupMenu.getMenuInflater().inflate(R.menu.menu_popuplv, popupMenu.getMenu());
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        switch (item.getItemId()) {
+                            case R.id.lvSua:
+                                SuaLV(position);
+                                break;
+                            case R.id.lvXoa:
+                                XoaLV(position);
+                                break;
+                        }
+                        return false;
+                    }
+                });
+                popupMenu.show();
+                return false;
+            }
+        });
+    }
+
+    private void GetDataDanhSach() {
+        Cursor dataRanDom = database.GetData("SELECT * FROM DanhSach");
+        arrayList.clear();
+        while ((dataRanDom.moveToNext())){
+            int id = dataRanDom.getInt(0);
+            String ten = dataRanDom.getString(1);
+            arrayList.add(ten);
+        }
+    }
+
+    private void SuaLV(final int position) {
+       /* edtNhapGiaTri.setText(arrayList.get(position));
+
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                arrayList.set(position,edtNhapGiaTri.getText().toString());
+                adapter.notifyDataSetChanged();
+            }
+        });*/
+
+    }
+
+    private void XoaLV(int position) {
+        String item = adapter.getItem(position);
+        adapter.remove(item);
+        adapter.notifyDataSetChanged();
+        assert item != null;
+        database.QueryData("DELETE FROM DanhSach WHERE ID='" + item + "'");
     }
 
     private void xulyRanDom() {
