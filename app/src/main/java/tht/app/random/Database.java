@@ -12,14 +12,32 @@ public class Database extends SQLiteOpenHelper {
         super(context, name, factory, version);
     }
 
-    public void QueryData(String sql){
+    public void QueryData(String sql) {
         SQLiteDatabase database = getWritableDatabase();
         database.execSQL(sql);
     }
 
-    public Cursor GetData(String sql){
+    public long insertData(String sql) {
+        SQLiteDatabase database = getWritableDatabase();
+        QueryData(sql);
+        long result = -1;
+        String queryLastRowInserted = "select last_insert_rowid()";
+        Cursor cursor = database .rawQuery(queryLastRowInserted, null);
+        if (cursor != null) {
+            try {
+                if (cursor.moveToFirst()) {
+                    result = cursor.getLong(0);
+                }
+            } finally {
+                cursor.close();
+            }
+        }
+        return result;
+    }
+
+    public Cursor GetData(String sql) {
         SQLiteDatabase database = getReadableDatabase();
-        return database.rawQuery(sql,null);
+        return database.rawQuery(sql, null);
     }
 
     @Override

@@ -22,7 +22,7 @@
         android:layout_marginStart="10dp"
         android:background="#80FFFFFF"
         android:ems="10"
-        android:hint="Nhập giá trị random"
+        android:hint="Nhập giá trị cần random"
         android:inputType="textPersonName"
         android:textSize="22sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -35,6 +35,7 @@
         android:background="#00FFFFFF"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="@+id/edtNhapGiaTri"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/edtNhapGiaTri"
         app:layout_constraintTop_toTopOf="@+id/edtNhapGiaTri"
         app:srcCompat="@drawable/add" />
