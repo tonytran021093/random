@@ -17,14 +17,15 @@
 
     <EditText
         android:id="@+id/edtNhapGiaTri"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="280dp"
+        android:layout_height="0dp"
         android:layout_marginStart="10dp"
         android:background="#80FFFFFF"
         android:ems="10"
-        android:hint="Nhập giá trị cần random"
+        android:hint="Enter a value that needs random"
         android:inputType="textPersonName"
-        android:textSize="22sp"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
@@ -43,8 +44,8 @@
     <ListView
         android:id="@+id/lvDanhSach"
         android:layout_width="300dp"
-        android:layout_height="250dp"
-        android:background="#4DFFFFFF"
+        android:layout_height="300dp"
+        android:background="#80FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnAdd" />
@@ -53,9 +54,9 @@
         android:id="@+id/txtKQLV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:textColor="#000000"
-        android:textSize="30sp"
+        android:textSize="50sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -64,8 +65,8 @@
     <ImageButton
         android:id="@+id/btnRanDom3"
         android:layout_width="100dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="30dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
         android:background="#00FFFFFF"
         android:scaleType="fitCenter"
         app:layout_constraintEnd_toEndOf="parent"

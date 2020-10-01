@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/lvSua"
+        android:id="@+id/lvEdit"
         android:title="Edit" />
     <item
-        android:id="@+id/lvXoa"
+        android:id="@+id/lvDelete"
         android:title="Delete" />
 </menu>

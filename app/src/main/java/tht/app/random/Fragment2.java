@@ -49,13 +49,13 @@ public class Fragment2 extends Fragment {
             public void onClick(View view) {
 
                 if (edtMin.getText().toString().trim().length() == 0 || edtMax.getText().toString().trim().length() == 0) {
-                    Toast.makeText(getContext(), "Vui lòng nhập đầy đủ giá trị", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), "Please enter the full value", Toast.LENGTH_LONG).show();
                 } else {
                     so1 = Integer.parseInt(edtMin.getText().toString());
                     so2 = Integer.parseInt(edtMax.getText().toString());
 
                     if (so1 >= so2) {
-                        Toast.makeText(getContext(), "Vui lòng nhập số Min nhỏ hơn số Max", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getContext(), "Please enter the Min number less than the Max number", Toast.LENGTH_LONG).show();
                     } else {
                         xulyRanDom();
                     }

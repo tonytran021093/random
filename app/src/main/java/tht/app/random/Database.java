@@ -8,8 +8,18 @@ import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
 
 public class Database extends SQLiteOpenHelper {
+
     public Database(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
+    }
+
+    public void deleteTableF(String tablename) {
+
+        String selectQuery = "DELETE FROM " + tablename;
+
+        SQLiteDatabase database= this.getWritableDatabase();
+
+        database.execSQL(selectQuery);
     }
 
     public void QueryData(String sql) {
@@ -49,4 +59,5 @@ public class Database extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
     }
+
 }

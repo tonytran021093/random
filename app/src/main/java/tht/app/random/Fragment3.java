@@ -1,12 +1,15 @@
 package tht.app.random;
 
+import android.app.Dialog;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -93,7 +96,7 @@ public class Fragment3 extends Fragment {
                         Toast.makeText(getContext(), "Có lỗi xảy ra, vui lòng thử lại.", Toast.LENGTH_LONG).show();
                     }
                 } else {
-                    Toast.makeText(getContext(), "Vui lòng nhập giá trị", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), "Please enter a value", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -104,7 +107,7 @@ public class Fragment3 extends Fragment {
 
                 int totalItem = arrayList.size();
                 if (totalItem == 0) {
-                    Toast.makeText(getContext(), "Vui lòng nhập giá trị", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), "Please enter a value", Toast.LENGTH_LONG).show();
                 } else {
                     xulyRanDom();
                 }
@@ -120,11 +123,11 @@ public class Fragment3 extends Fragment {
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
                         switch (item.getItemId()) {
-                            case R.id.lvSua:
-                                SuaLV(position);
+                            case R.id.lvEdit:
+                                Edit(position);
                                 break;
-                            case R.id.lvXoa:
-                                XoaLV(position);
+                            case R.id.lvDelete:
+                                Delete(position);
                                 break;
                         }
                         return false;
@@ -148,21 +151,35 @@ public class Fragment3 extends Fragment {
         adapter.notifyDataSetChanged();
     }
 
-    private void SuaLV(final int position) {
+    private void Edit(final int position) {
+        final Dialog dialog = new Dialog(Objects.requireNonNull(this.getContext()));
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.dialog_add);
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.show();
 
-       /* edtNhapGiaTri.setText(arrayList.get(position));
+        final EditText edtUpdate = dialog.findViewById(R.id.edtUpdate);
+        ImageButton imbUpdate = dialog.findViewById(R.id.imbUpdate);
+        TenRandom itemEdit = adapter.getItem(position);
+        assert itemEdit != null;
+        edtUpdate.setText(itemEdit.getName());
 
-        btnAdd.setOnClickListener(new View.OnClickListener() {
+        imbUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                arrayList.set(position,edtNhapGiaTri.getText().toString());
-                adapter.notifyDataSetChanged();
+                String ten = edtUpdate.getText().toString();
+
+                TenRandom id = adapter.getItem(position);
+                assert id != null;
+                database.QueryData("UPDATE DanhSach SET TenRanDom = '" + ten + "'WHERE ID ='" + id.getId() + "' ");
+                GetDataDanhSach();
+                dialog.cancel();
             }
-        });*/
+        });
 
     }
 
-    private void XoaLV(int position) {
+    private void Delete(int position) {
         TenRandom item = arrayList.get(position);
         adapter.remove(item);
 
